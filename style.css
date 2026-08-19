@@ -2959,3 +2959,78 @@ body.dark-theme .copyright {
             0.01ms !important;
     }
 }
+/* =========================================================
+   FIX — MOBILE FOOTER LIGHT THEME VISIBILITY
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    body:not(.dark-theme) .footer {
+        position: relative;
+        z-index: 1000;
+
+        display: block;
+        visibility: visible;
+        opacity: 1;
+
+        width: 100%;
+        min-height: 260px;
+
+        background: #33252d !important;
+        color: #fff8ef !important;
+
+        border-top: 1px solid rgba(217, 184, 143, 0.25);
+
+        overflow: visible;
+    }
+
+    body:not(.dark-theme) .footer-container {
+        position: relative;
+        z-index: 1001;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        width: calc(100% - 32px);
+        margin: 0 auto;
+
+        visibility: visible;
+        opacity: 1;
+    }
+
+    body:not(.dark-theme) .footer-brand,
+    body:not(.dark-theme) .footer-links,
+    body:not(.dark-theme) .footer-credit {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    body:not(.dark-theme) .footer-brand .logo-main {
+        color: #fffaf2 !important;
+    }
+
+    body:not(.dark-theme) .footer-brand .logo-accent {
+        color: #d9b88f !important;
+    }
+
+    body:not(.dark-theme) .footer-brand p {
+        color: rgba(255, 248, 239, 0.72) !important;
+    }
+
+    body:not(.dark-theme) .footer-links a {
+        color: rgba(255, 248, 239, 0.78) !important;
+    }
+
+    body:not(.dark-theme) .footer-links a:hover {
+        color: #e0bd91 !important;
+    }
+
+    body:not(.dark-theme) .footer-credit {
+        color: rgba(255, 248, 239, 0.68) !important;
+    }
+
+    body:not(.dark-theme) .footer .copyright {
+        color: rgba(255, 248, 239, 0.50) !important;
+    }
+}
