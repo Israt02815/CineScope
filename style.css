@@ -1,4 +1,3 @@
-
 :root {
     /* =====================================================
        CINE SCOPE — WARM CINEMA LIGHT THEME
@@ -1176,7 +1175,6 @@ body.dark-theme .loader {
     position: absolute;
 
     top: 0;
-
     left: 50%;
 
     width: 1px;
@@ -1705,7 +1703,7 @@ body.dark-theme .no-results {
 .footer {
     position: relative;
 
-    z-index: 10;
+    z-index: 100;
 
     width: 100%;
 
@@ -1728,6 +1726,8 @@ body.dark-theme .no-results {
     opacity: 1;
 
     overflow: visible;
+
+    isolation: isolate;
 
     transition:
         background-color 0.35s ease,
@@ -2631,7 +2631,7 @@ body.dark-theme .copyright {
     .footer {
         position: relative;
 
-        z-index: 100;
+        z-index: 1000;
 
         width: 100%;
 
@@ -2649,12 +2649,22 @@ body.dark-theme .copyright {
 
         overflow: visible;
 
-        background: #33252d;
+        background: #33252d !important;
 
-        color: #fff8ef;
+        color: #fff8ef !important;
+
+        border-top:
+            1px solid
+            rgba(217, 184, 143, 0.25);
+
+        isolation: isolate;
     }
 
     .footer-container {
+        position: relative;
+
+        z-index: 1001;
+
         width: calc(100% - 32px);
 
         max-width: none;
@@ -2693,11 +2703,11 @@ body.dark-theme .copyright {
     }
 
     .footer-brand .logo-main {
-        color: #fffaf2;
+        color: #fffaf2 !important;
     }
 
     .footer-brand .logo-accent {
-        color: #d9b88f;
+        color: #d9b88f !important;
     }
 
     .footer-brand p {
@@ -2708,7 +2718,7 @@ body.dark-theme .copyright {
         margin-top: 10px;
 
         color:
-            rgba(255, 248, 239, 0.72);
+            rgba(255, 248, 239, 0.72) !important;
 
         font-size: 13px;
 
@@ -2741,7 +2751,7 @@ body.dark-theme .copyright {
         display: inline-block;
 
         color:
-            rgba(255, 248, 239, 0.78);
+            rgba(255, 248, 239, 0.78) !important;
 
         font-size: 13px;
 
@@ -2751,7 +2761,7 @@ body.dark-theme .copyright {
     }
 
     .footer-links a:hover {
-        color: #e0bd91;
+        color: #e0bd91 !important;
     }
 
     .footer-credit {
@@ -2762,7 +2772,7 @@ body.dark-theme .copyright {
         text-align: left;
 
         color:
-            rgba(255, 248, 239, 0.68);
+            rgba(255, 248, 239, 0.68) !important;
 
         font-size: 12px;
 
@@ -2775,7 +2785,7 @@ body.dark-theme .copyright {
         margin-top: 6px;
 
         color:
-            rgba(255, 248, 239, 0.50);
+            rgba(255, 248, 239, 0.50) !important;
 
         display: block;
 
@@ -2790,9 +2800,9 @@ body.dark-theme .copyright {
        ===================================================== */
 
     body.dark-theme .footer {
-        background: #08070b;
+        background: #08070b !important;
 
-        color: #f5f1ea;
+        color: #f5f1ea !important;
 
         border-top:
             1px solid
@@ -2800,35 +2810,35 @@ body.dark-theme .copyright {
     }
 
     body.dark-theme .footer-brand .logo-main {
-        color: #f5f1ea;
+        color: #f5f1ea !important;
     }
 
     body.dark-theme .footer-brand .logo-accent {
-        color: #d9b88f;
+        color: #d9b88f !important;
     }
 
     body.dark-theme .footer-brand p {
         color:
-            rgba(245, 241, 234, 0.68);
+            rgba(245, 241, 234, 0.68) !important;
     }
 
     body.dark-theme .footer-links a {
         color:
-            rgba(245, 241, 234, 0.72);
+            rgba(245, 241, 234, 0.72) !important;
     }
 
     body.dark-theme .footer-links a:hover {
-        color: #e8cca7;
+        color: #e8cca7 !important;
     }
 
     body.dark-theme .footer-credit {
         color:
-            rgba(245, 241, 234, 0.62);
+            rgba(245, 241, 234, 0.62) !important;
     }
 
     body.dark-theme .copyright {
         color:
-            rgba(245, 241, 234, 0.45);
+            rgba(245, 241, 234, 0.45) !important;
     }
 
 
@@ -2957,80 +2967,5 @@ body.dark-theme .copyright {
 
         transition-duration:
             0.01ms !important;
-    }
-}
-/* =========================================================
-   FIX — MOBILE FOOTER LIGHT THEME VISIBILITY
-   ========================================================= */
-
-@media (max-width: 600px) {
-
-    body:not(.dark-theme) .footer {
-        position: relative;
-        z-index: 1000;
-
-        display: block;
-        visibility: visible;
-        opacity: 1;
-
-        width: 100%;
-        min-height: 260px;
-
-        background: #33252d !important;
-        color: #fff8ef !important;
-
-        border-top: 1px solid rgba(217, 184, 143, 0.25);
-
-        overflow: visible;
-    }
-
-    body:not(.dark-theme) .footer-container {
-        position: relative;
-        z-index: 1001;
-
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-
-        width: calc(100% - 32px);
-        margin: 0 auto;
-
-        visibility: visible;
-        opacity: 1;
-    }
-
-    body:not(.dark-theme) .footer-brand,
-    body:not(.dark-theme) .footer-links,
-    body:not(.dark-theme) .footer-credit {
-        visibility: visible;
-        opacity: 1;
-    }
-
-    body:not(.dark-theme) .footer-brand .logo-main {
-        color: #fffaf2 !important;
-    }
-
-    body:not(.dark-theme) .footer-brand .logo-accent {
-        color: #d9b88f !important;
-    }
-
-    body:not(.dark-theme) .footer-brand p {
-        color: rgba(255, 248, 239, 0.72) !important;
-    }
-
-    body:not(.dark-theme) .footer-links a {
-        color: rgba(255, 248, 239, 0.78) !important;
-    }
-
-    body:not(.dark-theme) .footer-links a:hover {
-        color: #e0bd91 !important;
-    }
-
-    body:not(.dark-theme) .footer-credit {
-        color: rgba(255, 248, 239, 0.68) !important;
-    }
-
-    body:not(.dark-theme) .footer .copyright {
-        color: rgba(255, 248, 239, 0.50) !important;
     }
 }
