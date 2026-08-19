@@ -1,4 +1,3 @@
-
 "use strict";
 
 
@@ -18,7 +17,6 @@ let watchlist =
     JSON.parse(
         localStorage.getItem("cinescopeWatchlist")
     ) || [];
-
 
 let currentMovies = [];
 
@@ -42,7 +40,6 @@ function getPoster(movie) {
     }
 
     return createPlaceholder(movie);
-
 }
 
 
@@ -57,9 +54,7 @@ function createPlaceholder(movie) {
         movie?.name ||
         "Movie";
 
-
     const svg = `
-
         <svg
             xmlns="http://www.w3.org/2000/svg"
             width="500"
@@ -95,13 +90,11 @@ function createPlaceholder(movie) {
 
             </defs>
 
-
             <rect
                 width="500"
                 height="750"
                 fill="url(#bg)"
             />
-
 
             <circle
                 cx="250"
@@ -113,7 +106,6 @@ function createPlaceholder(movie) {
                 opacity=".35"
             />
 
-
             <text
                 x="250"
                 y="315"
@@ -123,7 +115,6 @@ function createPlaceholder(movie) {
             >
                 ✦
             </text>
-
 
             <text
                 x="250"
@@ -136,7 +127,6 @@ function createPlaceholder(movie) {
                 CineScope
             </text>
 
-
             <text
                 x="250"
                 y="545"
@@ -147,7 +137,6 @@ function createPlaceholder(movie) {
             >
                 Poster unavailable
             </text>
-
 
             <text
                 x="250"
@@ -161,15 +150,12 @@ function createPlaceholder(movie) {
             </text>
 
         </svg>
-
     `;
-
 
     return (
         "data:image/svg+xml;charset=UTF-8," +
         encodeURIComponent(svg)
     );
-
 }
 
 
@@ -185,7 +171,6 @@ function escapeHTML(text) {
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
-
 }
 
 
@@ -200,12 +185,10 @@ function createMovieCard(movie) {
         movie.name ||
         "Untitled";
 
-
     const year =
         movie.release_date
             ? movie.release_date.substring(0, 4)
             : "N/A";
-
 
     const rating =
         movie.vote_average
@@ -214,7 +197,6 @@ function createMovieCard(movie) {
             ).toFixed(1)
             : "N/A";
 
-
     const isSaved =
         watchlist.some(
             item =>
@@ -222,9 +204,7 @@ function createMovieCard(movie) {
                 Number(movie.id)
         );
 
-
     return `
-
         <article
             class="movie-card"
             data-movie-id="${movie.id}"
@@ -240,7 +220,6 @@ function createMovieCard(movie) {
                     alt="${escapeHTML(title)}"
                     loading="lazy"
                 >
-
 
                 <button
                     class="movie-action watchlist-btn"
@@ -270,22 +249,17 @@ function createMovieCard(movie) {
 
             </div>
 
-
             <div class="movie-info">
 
                 <h3 class="movie-title">
-
                     ${escapeHTML(title)}
-
                 </h3>
-
 
                 <div class="movie-meta">
 
                     <span>
                         ${year}
                     </span>
-
 
                     <span class="movie-rating">
 
@@ -302,9 +276,7 @@ function createMovieCard(movie) {
             </div>
 
         </article>
-
     `;
-
 }
 
 
@@ -318,7 +290,6 @@ function renderMovies(movies) {
         document.querySelector("#movieGrid") ||
         document.querySelector(".movie-grid");
 
-
     if (!grid) {
 
         console.error(
@@ -326,15 +297,12 @@ function renderMovies(movies) {
         );
 
         return;
-
     }
-
 
     currentMovies =
         Array.isArray(movies)
             ? movies
             : [];
-
 
     if (
         currentMovies.length === 0
@@ -361,9 +329,7 @@ function renderMovies(movies) {
         `;
 
         return;
-
     }
-
 
     grid.innerHTML =
         currentMovies
@@ -372,7 +338,6 @@ function renderMovies(movies) {
                     createMovieCard(movie)
             )
             .join("");
-
 }
 
 
@@ -386,9 +351,7 @@ function showLoading() {
         document.querySelector("#movieGrid") ||
         document.querySelector(".movie-grid");
 
-
     if (!grid) return;
-
 
     grid.innerHTML = `
 
@@ -403,7 +366,6 @@ function showLoading() {
         </div>
 
     `;
-
 }
 
 
@@ -417,9 +379,7 @@ function showError(message) {
         document.querySelector("#movieGrid") ||
         document.querySelector(".movie-grid");
 
-
     if (!grid) return;
-
 
     grid.innerHTML = `
 
@@ -440,7 +400,6 @@ function showError(message) {
         </div>
 
     `;
-
 }
 
 
@@ -455,14 +414,12 @@ function setResultsTitle(text) {
             "#resultsTitle"
         );
 
-
     if (heading) {
 
         heading.textContent =
             text;
 
     }
-
 }
 
 
@@ -476,20 +433,16 @@ async function loadPopularMovies() {
 
         showLoading();
 
-
         const data =
             await getPopularMovies();
-
 
         setResultsTitle(
             "Explore"
         );
 
-
         renderMovies(
             data.results || []
         );
-
 
     } catch (error) {
 
@@ -498,13 +451,11 @@ async function loadPopularMovies() {
             error
         );
 
-
         showError(
             error.message
         );
 
     }
-
 }
 
 
@@ -517,7 +468,6 @@ async function performSearch(query) {
     const searchTerm =
         query.trim();
 
-
     if (!searchTerm) {
 
         await loadPopularMovies();
@@ -526,27 +476,22 @@ async function performSearch(query) {
 
     }
 
-
     try {
 
         showLoading();
-
 
         const data =
             await searchMovies(
                 searchTerm
             );
 
-
         setResultsTitle(
             `Search results for "${searchTerm}"`
         );
 
-
         renderMovies(
             data.results || []
         );
-
 
     } catch (error) {
 
@@ -555,13 +500,11 @@ async function performSearch(query) {
             error
         );
 
-
         showError(
             error.message
         );
 
     }
-
 }
 
 
@@ -576,17 +519,14 @@ function setupSearch() {
             "#searchInput"
         );
 
-
     const button =
         document.querySelector(
             "#searchButton"
         );
 
-
     console.log(
         "CineScope search initialized."
     );
-
 
     if (!input) {
 
@@ -598,7 +538,6 @@ function setupSearch() {
 
     }
 
-
     if (button) {
 
         button.addEventListener(
@@ -607,10 +546,8 @@ function setupSearch() {
 
                 event.preventDefault();
 
-
                 const query =
                     input.value.trim();
-
 
                 if (!query) {
 
@@ -620,7 +557,6 @@ function setupSearch() {
 
                 }
 
-
                 performSearch(
                     query
                 );
@@ -629,7 +565,6 @@ function setupSearch() {
         );
 
     }
-
 
     input.addEventListener(
         "keydown",
@@ -641,10 +576,8 @@ function setupSearch() {
 
                 event.preventDefault();
 
-
                 const query =
                     input.value.trim();
-
 
                 if (!query) {
 
@@ -653,7 +586,6 @@ function setupSearch() {
                     return;
 
                 }
-
 
                 performSearch(
                     query
@@ -664,7 +596,6 @@ function setupSearch() {
         }
     );
 
-
     input.addEventListener(
         "input",
         function() {
@@ -672,13 +603,11 @@ function setupSearch() {
             const query =
                 input.value.trim();
 
-
             if (!query) {
 
                 setResultsTitle(
                     "Explore"
                 );
-
 
                 loadPopularMovies();
 
@@ -701,9 +630,7 @@ function setupSorting() {
             "#sortMovies"
         );
 
-
     if (!select) return;
-
 
     select.addEventListener(
         "change",
@@ -711,7 +638,6 @@ function setupSorting() {
 
             const value =
                 this.value;
-
 
             if (
                 value === "popular"
@@ -721,7 +647,6 @@ function setupSorting() {
 
             }
 
-
             else if (
                 value === "rating"
             ) {
@@ -730,15 +655,12 @@ function setupSorting() {
 
                     showLoading();
 
-
                     const data =
                         await getTopRatedMovies();
-
 
                     setResultsTitle(
                         "Highest Rated"
                     );
-
 
                     renderMovies(
                         data.results || []
@@ -751,7 +673,6 @@ function setupSorting() {
                         error
                     );
 
-
                     showError(
                         error.message
                     );
@@ -759,7 +680,6 @@ function setupSorting() {
                 }
 
             }
-
 
             else if (
                 value === "newest"
@@ -769,15 +689,12 @@ function setupSorting() {
 
                     showLoading();
 
-
                     const data =
                         await getNowPlayingMovies();
-
 
                     setResultsTitle(
                         "Newest"
                     );
-
 
                     renderMovies(
                         data.results || []
@@ -789,7 +706,6 @@ function setupSorting() {
                         "Newest sort error:",
                         error
                     );
-
 
                     showError(
                         error.message
@@ -816,7 +732,6 @@ function setupGenres() {
             ".genre-card"
         );
 
-
     genreButtons.forEach(
         button => {
 
@@ -826,7 +741,6 @@ function setupGenres() {
 
                     const genreId =
                         this.dataset.genreId;
-
 
                     if (!genreId) {
 
@@ -838,17 +752,14 @@ function setupGenres() {
 
                     }
 
-
                     try {
 
                         showLoading();
-
 
                         const data =
                             await getMoviesByGenre(
                                 genreId
                             );
-
 
                         const genreName =
                             this.querySelector(
@@ -856,16 +767,13 @@ function setupGenres() {
                             )?.textContent
                             || "Genre";
 
-
                         setResultsTitle(
                             genreName
                         );
 
-
                         renderMovies(
                             data.results || []
                         );
-
 
                         document
                             .querySelector(
@@ -875,14 +783,12 @@ function setupGenres() {
                                 behavior: "smooth"
                             });
 
-
                     } catch (error) {
 
                         console.error(
                             "Genre error:",
                             error
                         );
-
 
                         showError(
                             error.message
@@ -924,14 +830,12 @@ function toggleWatchlist(id) {
     const numericId =
         Number(id);
 
-
     const existingIndex =
         watchlist.findIndex(
             movie =>
                 Number(movie.id) ===
                 numericId
         );
-
 
     if (
         existingIndex !== -1
@@ -953,7 +857,6 @@ function toggleWatchlist(id) {
                     numericId
             );
 
-
         if (movie) {
 
             watchlist.push(
@@ -964,14 +867,11 @@ function toggleWatchlist(id) {
 
     }
 
-
     saveWatchlist();
-
 
     renderMovies(
         currentMovies
     );
-
 
     renderWatchlist();
 
@@ -989,9 +889,7 @@ function renderWatchlist() {
             "#watchlistGrid"
         );
 
-
     if (!grid) return;
-
 
     if (
         watchlist.length === 0
@@ -1021,7 +919,6 @@ function renderWatchlist() {
 
     }
 
-
     grid.innerHTML =
         watchlist
             .map(
@@ -1041,7 +938,6 @@ function findMovie(id) {
 
     const numericId =
         Number(id);
-
 
     return (
 
@@ -1075,48 +971,44 @@ function createModal() {
             "#movieModal"
         );
 
-
     if (modal) {
 
         return modal;
 
     }
 
-
     modal =
         document.createElement(
             "div"
         );
 
-
     modal.id =
         "movieModal";
 
-
     modal.className =
         "modal";
-
 
     modal.setAttribute(
         "aria-hidden",
         "true"
     );
 
-
     document.body.appendChild(
         modal
     );
 
+
+    /*
+     * Clicking the dark area outside
+     * the modal content closes it.
+     */
 
     modal.addEventListener(
         "click",
         function(event) {
 
             if (
-                event.target === modal ||
-                event.target.closest(
-                    ".close-modal"
-                )
+                event.target === modal
             ) {
 
                 closeModal();
@@ -1143,7 +1035,6 @@ function closeModal() {
             "#movieModal"
         );
 
-
     if (!modal) return;
 
 
@@ -1161,6 +1052,29 @@ function closeModal() {
     document.body.style.overflow =
         "";
 
+
+    /*
+     * Stop the YouTube video completely.
+     * This prevents audio from continuing
+     * after closing the trailer.
+     */
+
+    const iframe =
+        modal.querySelector(
+            "iframe"
+        );
+
+    if (iframe) {
+
+        iframe.src = "";
+
+    }
+
+
+    console.log(
+        "CineScope modal closed."
+    );
+
 }
 
 
@@ -1172,7 +1086,6 @@ async function openTrailer(id) {
 
     const movie =
         findMovie(id);
-
 
     if (!movie) {
 
@@ -1194,12 +1107,19 @@ async function openTrailer(id) {
 
         modal.innerHTML = `
 
-            <div class="modal-content">
+            <div
+                class="modal-content"
+                role="dialog"
+                aria-modal="true"
+                aria-label="Movie trailer"
+            >
 
                 <button
                     class="close-modal"
+                    id="closeTrailerButton"
                     type="button"
-                    aria-label="Close"
+                    aria-label="Close trailer"
+                    title="Close"
                 >
                     ×
                 </button>
@@ -1237,26 +1157,67 @@ async function openTrailer(id) {
         `;
 
 
+        /*
+         * =====================================================
+         * IMPORTANT FIX
+         * Directly attach the close button event here.
+         * =====================================================
+         */
+
+        const closeButton =
+            modal.querySelector(
+                "#closeTrailerButton"
+            );
+
+
+        if (closeButton) {
+
+            closeButton.addEventListener(
+                "click",
+                function(event) {
+
+                    event.preventDefault();
+
+                    event.stopPropagation();
+
+                    closeModal();
+
+                }
+            );
+
+        }
+
+
+        /*
+         * Show modal
+         */
+
         modal.classList.add(
             "active"
         );
-
 
         modal.setAttribute(
             "aria-hidden",
             "false"
         );
 
-
         document.body.style.overflow =
             "hidden";
 
+
+        /*
+         * Get trailer videos
+         */
 
         const videos =
             await getMovieVideos(
                 id
             );
 
+
+        /*
+         * Find the best trailer
+         */
 
         const trailer =
             videos.find(
@@ -1294,6 +1255,10 @@ async function openTrailer(id) {
         if (!player) return;
 
 
+        /*
+         * If trailer exists
+         */
+
         if (trailer) {
 
             player.innerHTML = `
@@ -1317,6 +1282,11 @@ async function openTrailer(id) {
             `;
 
         }
+
+
+        /*
+         * No trailer
+         */
 
         else {
 
@@ -1407,7 +1377,6 @@ function setupThemeToggle() {
             ".theme-toggle"
         );
 
-
     if (!themeButton) {
 
         console.error(
@@ -1418,10 +1387,6 @@ function setupThemeToggle() {
 
     }
 
-
-    /*
-     * Check saved theme.
-     */
 
     const savedTheme =
         localStorage.getItem(
@@ -1440,16 +1405,8 @@ function setupThemeToggle() {
     }
 
 
-    /*
-     * Update icon when page loads.
-     */
-
     updateThemeIcon();
 
-
-    /*
-     * Theme button click.
-     */
 
     themeButton.addEventListener(
         "click",
@@ -1457,17 +1414,14 @@ function setupThemeToggle() {
 
             event.preventDefault();
 
-
             document.body.classList.toggle(
                 "dark-theme"
             );
-
 
             const isDark =
                 document.body.classList.contains(
                     "dark-theme"
                 );
-
 
             localStorage.setItem(
                 "cinescopeTheme",
@@ -1475,7 +1429,6 @@ function setupThemeToggle() {
                     ? "dark"
                     : "light"
             );
-
 
             updateThemeIcon();
 
@@ -1496,7 +1449,6 @@ function updateThemeIcon() {
             ".theme-toggle"
         );
 
-
     if (!themeButton) return;
 
 
@@ -1504,7 +1456,6 @@ function updateThemeIcon() {
         themeButton.querySelector(
             "i"
         );
-
 
     if (!icon) return;
 
@@ -1520,12 +1471,10 @@ function updateThemeIcon() {
         icon.className =
             "fa-solid fa-sun";
 
-
         themeButton.setAttribute(
             "aria-label",
             "Switch to light theme"
         );
-
 
         themeButton.setAttribute(
             "title",
@@ -1539,12 +1488,10 @@ function updateThemeIcon() {
         icon.className =
             "fa-solid fa-moon";
 
-
         themeButton.setAttribute(
             "aria-label",
             "Switch to dark theme"
         );
-
 
         themeButton.setAttribute(
             "title",
@@ -1565,9 +1512,38 @@ document.addEventListener(
     function(event) {
 
 
-        /* =================================================
-           WATCHLIST BUTTON
-           ================================================= */
+        /*
+         * =================================================
+         * CLOSE BUTTON
+         * =================================================
+         *
+         * Extra safety handler.
+         */
+
+        const closeButton =
+            event.target.closest(
+                ".close-modal"
+            );
+
+
+        if (closeButton) {
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
+            closeModal();
+
+            return;
+
+        }
+
+
+        /*
+         * =================================================
+         * WATCHLIST BUTTON
+         * =================================================
+         */
 
         const watchlistButton =
             event.target.closest(
@@ -1592,9 +1568,11 @@ document.addEventListener(
         }
 
 
-        /* =================================================
-           MOVIE CARD
-           ================================================= */
+        /*
+         * =================================================
+         * MOVIE CARD
+         * =================================================
+         */
 
         const movieCard =
             event.target.closest(
@@ -1605,7 +1583,6 @@ document.addEventListener(
         if (movieCard) {
 
             event.preventDefault();
-
 
             const movieId =
                 movieCard.dataset.movieId;
@@ -1777,38 +1754,29 @@ document.addEventListener(
 window.renderMovies =
     renderMovies;
 
-
 window.showLoading =
     showLoading;
-
 
 window.showError =
     showError;
 
-
 window.loadPopularMovies =
     loadPopularMovies;
-
 
 window.performSearch =
     performSearch;
 
-
 window.toggleWatchlist =
     toggleWatchlist;
-
 
 window.renderWatchlist =
     renderWatchlist;
 
-
 window.openTrailer =
     openTrailer;
 
-
 window.closeModal =
     closeModal;
-
 
 window.setupThemeToggle =
     setupThemeToggle;
