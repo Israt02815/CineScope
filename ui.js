@@ -31,12 +31,7 @@ function getPoster(movie) {
         movie &&
         movie.poster_path
     ) {
-
-        return (
-            IMAGE_BASE_URL +
-            movie.poster_path
-        );
-
+        return IMAGE_BASE_URL + movie.poster_path;
     }
 
     return createPlaceholder(movie);
@@ -60,9 +55,7 @@ function createPlaceholder(movie) {
             width="500"
             height="750"
         >
-
             <defs>
-
                 <linearGradient
                     id="bg"
                     x1="0"
@@ -70,7 +63,6 @@ function createPlaceholder(movie) {
                     x2="1"
                     y2="1"
                 >
-
                     <stop
                         offset="0%"
                         stop-color="#17152d"
@@ -85,9 +77,7 @@ function createPlaceholder(movie) {
                         offset="100%"
                         stop-color="#101123"
                     />
-
                 </linearGradient>
-
             </defs>
 
             <rect
@@ -148,7 +138,6 @@ function createPlaceholder(movie) {
             >
                 ${escapeHTML(title)}
             </text>
-
         </svg>
     `;
 
@@ -192,9 +181,7 @@ function createMovieCard(movie) {
 
     const rating =
         movie.vote_average
-            ? Number(
-                movie.vote_average
-            ).toFixed(1)
+            ? Number(movie.vote_average).toFixed(1)
             : "N/A";
 
     const isSaved =
@@ -263,9 +250,7 @@ function createMovieCard(movie) {
 
                     <span class="movie-rating">
 
-                        <i
-                            class="fa-solid fa-star"
-                        ></i>
+                        <i class="fa-solid fa-star"></i>
 
                         ${rating}
 
@@ -304,9 +289,7 @@ function renderMovies(movies) {
             ? movies
             : [];
 
-    if (
-        currentMovies.length === 0
-    ) {
+    if (currentMovies.length === 0) {
 
         grid.innerHTML = `
 
@@ -333,10 +316,7 @@ function renderMovies(movies) {
 
     grid.innerHTML =
         currentMovies
-            .map(
-                movie =>
-                    createMovieCard(movie)
-            )
+            .map(movie => createMovieCard(movie))
             .join("");
 }
 
@@ -404,27 +384,22 @@ function showError(message) {
 
 
 /* =========================================================
-   UPDATE RESULTS TITLE
+   RESULTS TITLE
    ========================================================= */
 
 function setResultsTitle(text) {
 
     const heading =
-        document.querySelector(
-            "#resultsTitle"
-        );
+        document.querySelector("#resultsTitle");
 
     if (heading) {
-
-        heading.textContent =
-            text;
-
+        heading.textContent = text;
     }
 }
 
 
 /* =========================================================
-   LOAD POPULAR
+   LOAD POPULAR MOVIES
    ========================================================= */
 
 async function loadPopularMovies() {
@@ -436,9 +411,7 @@ async function loadPopularMovies() {
         const data =
             await getPopularMovies();
 
-        setResultsTitle(
-            "Explore"
-        );
+        setResultsTitle("Explore");
 
         renderMovies(
             data.results || []
@@ -452,9 +425,8 @@ async function loadPopularMovies() {
         );
 
         showError(
-            error.message
+            error.message || "Unable to load movies."
         );
-
     }
 }
 
@@ -466,14 +438,13 @@ async function loadPopularMovies() {
 async function performSearch(query) {
 
     const searchTerm =
-        query.trim();
+        String(query || "").trim();
 
     if (!searchTerm) {
 
         await loadPopularMovies();
 
         return;
-
     }
 
     try {
@@ -481,9 +452,7 @@ async function performSearch(query) {
         showLoading();
 
         const data =
-            await searchMovies(
-                searchTerm
-            );
+            await searchMovies(searchTerm);
 
         setResultsTitle(
             `Search results for "${searchTerm}"`
@@ -501,9 +470,8 @@ async function performSearch(query) {
         );
 
         showError(
-            error.message
+            error.message || "Search failed."
         );
-
     }
 }
 
@@ -515,18 +483,10 @@ async function performSearch(query) {
 function setupSearch() {
 
     const input =
-        document.querySelector(
-            "#searchInput"
-        );
+        document.querySelector("#searchInput");
 
     const button =
-        document.querySelector(
-            "#searchButton"
-        );
-
-    console.log(
-        "CineScope search initialized."
-    );
+        document.querySelector("#searchButton");
 
     if (!input) {
 
@@ -535,7 +495,6 @@ function setupSearch() {
         );
 
         return;
-
     }
 
     if (button) {
@@ -546,53 +505,25 @@ function setupSearch() {
 
                 event.preventDefault();
 
-                const query =
-                    input.value.trim();
-
-                if (!query) {
-
-                    loadPopularMovies();
-
-                    return;
-
-                }
-
                 performSearch(
-                    query
+                    input.value
                 );
-
             }
         );
-
     }
 
     input.addEventListener(
         "keydown",
         function(event) {
 
-            if (
-                event.key === "Enter"
-            ) {
+            if (event.key === "Enter") {
 
                 event.preventDefault();
 
-                const query =
-                    input.value.trim();
-
-                if (!query) {
-
-                    loadPopularMovies();
-
-                    return;
-
-                }
-
                 performSearch(
-                    query
+                    input.value
                 );
-
             }
-
         }
     );
 
@@ -600,22 +531,14 @@ function setupSearch() {
         "input",
         function() {
 
-            const query =
-                input.value.trim();
+            if (!this.value.trim()) {
 
-            if (!query) {
-
-                setResultsTitle(
-                    "Explore"
-                );
+                setResultsTitle("Explore");
 
                 loadPopularMovies();
-
             }
-
         }
     );
-
 }
 
 
@@ -626,9 +549,7 @@ function setupSearch() {
 function setupSorting() {
 
     const select =
-        document.querySelector(
-            "#sortMovies"
-        );
+        document.querySelector("#sortMovies");
 
     if (!select) return;
 
@@ -636,24 +557,19 @@ function setupSorting() {
         "change",
         async function() {
 
-            const value =
-                this.value;
+            const value = this.value;
 
-            if (
-                value === "popular"
-            ) {
+            try {
 
-                await loadPopularMovies();
+                showLoading();
 
-            }
+                if (value === "popular") {
 
-            else if (
-                value === "rating"
-            ) {
+                    await loadPopularMovies();
 
-                try {
+                }
 
-                    showLoading();
+                else if (value === "rating") {
 
                     const data =
                         await getTopRatedMovies();
@@ -665,29 +581,9 @@ function setupSorting() {
                     renderMovies(
                         data.results || []
                     );
-
-                } catch (error) {
-
-                    console.error(
-                        "Rating sort error:",
-                        error
-                    );
-
-                    showError(
-                        error.message
-                    );
-
                 }
 
-            }
-
-            else if (
-                value === "newest"
-            ) {
-
-                try {
-
-                    showLoading();
+                else if (value === "newest") {
 
                     const data =
                         await getNowPlayingMovies();
@@ -699,25 +595,21 @@ function setupSorting() {
                     renderMovies(
                         data.results || []
                     );
-
-                } catch (error) {
-
-                    console.error(
-                        "Newest sort error:",
-                        error
-                    );
-
-                    showError(
-                        error.message
-                    );
-
                 }
 
-            }
+            } catch (error) {
 
+                console.error(
+                    "Sorting error:",
+                    error
+                );
+
+                showError(
+                    error.message || "Unable to sort movies."
+                );
+            }
         }
     );
-
 }
 
 
@@ -728,9 +620,7 @@ function setupSorting() {
 function setupGenres() {
 
     const genreButtons =
-        document.querySelectorAll(
-            ".genre-card"
-        );
+        document.querySelectorAll(".genre-card");
 
     genreButtons.forEach(
         button => {
@@ -749,7 +639,6 @@ function setupGenres() {
                         );
 
                         return;
-
                     }
 
                     try {
@@ -764,8 +653,8 @@ function setupGenres() {
                         const genreName =
                             this.querySelector(
                                 "span:last-child"
-                            )?.textContent
-                            || "Genre";
+                            )?.textContent ||
+                            "Genre";
 
                         setResultsTitle(
                             genreName
@@ -776,9 +665,7 @@ function setupGenres() {
                         );
 
                         document
-                            .querySelector(
-                                "#movies"
-                            )
+                            .querySelector("#movies")
                             ?.scrollIntoView({
                                 behavior: "smooth"
                             });
@@ -791,17 +678,14 @@ function setupGenres() {
                         );
 
                         showError(
-                            error.message
+                            error.message ||
+                            "Unable to load this genre."
                         );
-
                     }
-
                 }
             );
-
         }
     );
-
 }
 
 
@@ -813,11 +697,8 @@ function saveWatchlist() {
 
     localStorage.setItem(
         "cinescopeWatchlist",
-        JSON.stringify(
-            watchlist
-        )
+        JSON.stringify(watchlist)
     );
-
 }
 
 
@@ -833,48 +714,35 @@ function toggleWatchlist(id) {
     const existingIndex =
         watchlist.findIndex(
             movie =>
-                Number(movie.id) ===
-                numericId
+                Number(movie.id) === numericId
         );
 
-    if (
-        existingIndex !== -1
-    ) {
+    if (existingIndex !== -1) {
 
         watchlist.splice(
             existingIndex,
             1
         );
 
-    }
-
-    else {
+    } else {
 
         const movie =
             currentMovies.find(
                 item =>
-                    Number(item.id) ===
-                    numericId
+                    Number(item.id) === numericId
             );
 
         if (movie) {
 
-            watchlist.push(
-                movie
-            );
-
+            watchlist.push(movie);
         }
-
     }
 
     saveWatchlist();
 
-    renderMovies(
-        currentMovies
-    );
+    renderMovies(currentMovies);
 
     renderWatchlist();
-
 }
 
 
@@ -885,15 +753,11 @@ function toggleWatchlist(id) {
 function renderWatchlist() {
 
     const grid =
-        document.querySelector(
-            "#watchlistGrid"
-        );
+        document.querySelector("#watchlistGrid");
 
     if (!grid) return;
 
-    if (
-        watchlist.length === 0
-    ) {
+    if (watchlist.length === 0) {
 
         grid.innerHTML = `
 
@@ -912,21 +776,15 @@ function renderWatchlist() {
                 </p>
 
             </div>
-
         `;
 
         return;
-
     }
 
     grid.innerHTML =
         watchlist
-            .map(
-                movie =>
-                    createMovieCard(movie)
-            )
+            .map(movie => createMovieCard(movie))
             .join("");
-
 }
 
 
@@ -940,23 +798,16 @@ function findMovie(id) {
         Number(id);
 
     return (
-
         currentMovies.find(
             movie =>
-                Number(movie.id) ===
-                numericId
+                Number(movie.id) === numericId
         )
-
         ||
-
         watchlist.find(
             movie =>
-                Number(movie.id) ===
-                numericId
+                Number(movie.id) === numericId
         )
-
     );
-
 }
 
 
@@ -967,60 +818,38 @@ function findMovie(id) {
 function createModal() {
 
     let modal =
-        document.querySelector(
-            "#movieModal"
-        );
+        document.querySelector("#movieModal");
 
     if (modal) {
-
         return modal;
-
     }
 
     modal =
-        document.createElement(
-            "div"
-        );
+        document.createElement("div");
 
-    modal.id =
-        "movieModal";
+    modal.id = "movieModal";
 
-    modal.className =
-        "modal";
+    modal.className = "modal";
 
     modal.setAttribute(
         "aria-hidden",
         "true"
     );
 
-    document.body.appendChild(
-        modal
-    );
-
-
-    /*
-     * Clicking the dark area outside
-     * the modal content closes it.
-     */
+    document.body.appendChild(modal);
 
     modal.addEventListener(
         "click",
         function(event) {
 
-            if (
-                event.target === modal
-            ) {
+            if (event.target === modal) {
 
                 closeModal();
-
             }
-
         }
     );
 
-
     return modal;
-
 }
 
 
@@ -1031,50 +860,25 @@ function createModal() {
 function closeModal() {
 
     const modal =
-        document.querySelector(
-            "#movieModal"
-        );
+        document.querySelector("#movieModal");
 
     if (!modal) return;
 
-
-    modal.classList.remove(
-        "active"
-    );
-
+    modal.classList.remove("active");
 
     modal.setAttribute(
         "aria-hidden",
         "true"
     );
 
-
-    document.body.style.overflow =
-        "";
-
-
-    /*
-     * Stop the YouTube video completely.
-     * This prevents audio from continuing
-     * after closing the trailer.
-     */
+    document.body.style.overflow = "";
 
     const iframe =
-        modal.querySelector(
-            "iframe"
-        );
+        modal.querySelector("iframe");
 
     if (iframe) {
-
         iframe.src = "";
-
     }
-
-
-    console.log(
-        "CineScope modal closed."
-    );
-
 }
 
 
@@ -1095,15 +899,12 @@ async function openTrailer(id) {
         );
 
         return;
-
     }
-
 
     try {
 
         const modal =
             createModal();
-
 
         modal.innerHTML = `
 
@@ -1124,7 +925,6 @@ async function openTrailer(id) {
                     ×
                 </button>
 
-
                 <div class="trailer-player">
 
                     <div class="loading">
@@ -1139,7 +939,6 @@ async function openTrailer(id) {
 
                 </div>
 
-
                 <div class="modal-info">
 
                     <h2>
@@ -1153,22 +952,12 @@ async function openTrailer(id) {
                 </div>
 
             </div>
-
         `;
-
-
-        /*
-         * =====================================================
-         * IMPORTANT FIX
-         * Directly attach the close button event here.
-         * =====================================================
-         */
 
         const closeButton =
             modal.querySelector(
                 "#closeTrailerButton"
             );
-
 
         if (closeButton) {
 
@@ -1181,43 +970,21 @@ async function openTrailer(id) {
                     event.stopPropagation();
 
                     closeModal();
-
                 }
             );
-
         }
 
-
-        /*
-         * Show modal
-         */
-
-        modal.classList.add(
-            "active"
-        );
+        modal.classList.add("active");
 
         modal.setAttribute(
             "aria-hidden",
             "false"
         );
 
-        document.body.style.overflow =
-            "hidden";
-
-
-        /*
-         * Get trailer videos
-         */
+        document.body.style.overflow = "hidden";
 
         const videos =
-            await getMovieVideos(
-                id
-            );
-
-
-        /*
-         * Find the best trailer
-         */
+            await getMovieVideos(id);
 
         const trailer =
             videos.find(
@@ -1227,37 +994,26 @@ async function openTrailer(id) {
                     video.official === true &&
                     video.key
             )
-
             ||
-
             videos.find(
                 video =>
                     video.site === "YouTube" &&
                     video.type === "Trailer" &&
                     video.key
             )
-
             ||
-
             videos.find(
                 video =>
                     video.site === "YouTube" &&
                     video.key
             );
 
-
         const player =
             modal.querySelector(
                 ".trailer-player"
             );
 
-
         if (!player) return;
-
-
-        /*
-         * If trailer exists
-         */
 
         if (trailer) {
 
@@ -1266,7 +1022,7 @@ async function openTrailer(id) {
                 <div class="trailer-click-area">
 
                     <iframe
-                        src="https://www.youtube.com/embed/${trailer.key}?rel=0&modestbranding=1"
+                        src="https://www.youtube-nocookie.com/embed/${trailer.key}?autoplay=1&rel=0&modestbranding=1"
                         title="${escapeHTML(
                             movie.title ||
                             movie.name ||
@@ -1278,25 +1034,15 @@ async function openTrailer(id) {
                     ></iframe>
 
                 </div>
-
             `;
 
-        }
-
-
-        /*
-         * No trailer
-         */
-
-        else {
+        } else {
 
             player.innerHTML = `
 
                 <div class="no-trailer">
 
-                    <i
-                        class="fa-solid fa-film"
-                    ></i>
+                    <i class="fa-solid fa-film"></i>
 
                     <h3>
                         Trailer unavailable
@@ -1307,11 +1053,8 @@ async function openTrailer(id) {
                     </p>
 
                 </div>
-
             `;
-
         }
-
 
     } catch (error) {
 
@@ -1320,49 +1063,36 @@ async function openTrailer(id) {
             error
         );
 
-
         const modal =
-            document.querySelector(
-                "#movieModal"
-            );
+            document.querySelector("#movieModal");
 
+        if (!modal) return;
 
-        if (modal) {
+        const player =
+            modal.querySelector(".trailer-player");
 
-            const player =
-                modal.querySelector(
-                    ".trailer-player"
-                );
+        if (player) {
 
+            player.innerHTML = `
 
-            if (player) {
+                <div class="no-trailer">
 
-                player.innerHTML = `
+                    <i
+                        class="fa-solid fa-circle-exclamation"
+                    ></i>
 
-                    <div class="no-trailer">
+                    <h3>
+                        Trailer unavailable
+                    </h3>
 
-                        <i
-                            class="fa-solid fa-circle-exclamation"
-                        ></i>
+                    <p>
+                        We couldn't load the trailer.
+                    </p>
 
-                        <h3>
-                            Trailer unavailable
-                        </h3>
-
-                        <p>
-                            We couldn't load the trailer.
-                        </p>
-
-                    </div>
-
-                `;
-
-            }
-
+                </div>
+            `;
         }
-
     }
-
 }
 
 
@@ -1373,40 +1103,25 @@ async function openTrailer(id) {
 function setupThemeToggle() {
 
     const themeButton =
-        document.querySelector(
-            ".theme-toggle"
-        );
+        document.querySelector(".theme-toggle");
 
     if (!themeButton) {
-
-        console.error(
-            "Theme button .theme-toggle was not found."
-        );
-
         return;
-
     }
-
 
     const savedTheme =
         localStorage.getItem(
             "cinescopeTheme"
         );
 
-
-    if (
-        savedTheme === "dark"
-    ) {
+    if (savedTheme === "dark") {
 
         document.body.classList.add(
             "dark-theme"
         );
-
     }
 
-
     updateThemeIcon();
-
 
     themeButton.addEventListener(
         "click",
@@ -1425,16 +1140,12 @@ function setupThemeToggle() {
 
             localStorage.setItem(
                 "cinescopeTheme",
-                isDark
-                    ? "dark"
-                    : "light"
+                isDark ? "dark" : "light"
             );
 
             updateThemeIcon();
-
         }
     );
-
 }
 
 
@@ -1451,20 +1162,15 @@ function updateThemeIcon() {
 
     if (!themeButton) return;
 
-
     const icon =
-        themeButton.querySelector(
-            "i"
-        );
+        themeButton.querySelector("i");
 
     if (!icon) return;
-
 
     const isDark =
         document.body.classList.contains(
             "dark-theme"
         );
-
 
     if (isDark) {
 
@@ -1481,9 +1187,7 @@ function updateThemeIcon() {
             "Switch to light theme"
         );
 
-    }
-
-    else {
+    } else {
 
         icon.className =
             "fa-solid fa-moon";
@@ -1497,9 +1201,268 @@ function updateThemeIcon() {
             "title",
             "Switch to dark theme"
         );
+    }
+}
 
+
+/* =========================================================
+   MOBILE HAMBURGER MENU
+   ========================================================= */
+
+function setupMobileMenu() {
+
+    /*
+     * Supports common hamburger button names:
+     *
+     * #menuToggle
+     * #hamburger
+     * .menu-toggle
+     * .hamburger
+     * .hamburger-menu
+     * [data-menu-toggle]
+     */
+
+    const menuButton =
+        document.querySelector(
+            "#menuToggle, " +
+            "#hamburger, " +
+            ".menu-toggle, " +
+            ".hamburger, " +
+            ".hamburger-menu, " +
+            "[data-menu-toggle]"
+        );
+
+    if (!menuButton) {
+
+        console.warn(
+            "Mobile hamburger button was not found."
+        );
+
+        return;
     }
 
+
+    /*
+     * Find the navigation menu.
+     */
+
+    const menu =
+        document.querySelector(
+            "#mobileMenu, " +
+            "#navMenu, " +
+            ".mobile-menu, " +
+            ".nav-menu, " +
+            ".navigation-menu, " +
+            "nav"
+        );
+
+    if (!menu) {
+
+        console.warn(
+            "Mobile navigation menu was not found."
+        );
+
+        return;
+    }
+
+
+    /*
+     * Prevent duplicate initialization.
+     */
+
+    if (
+        menuButton.dataset.menuInitialized === "true"
+    ) {
+        return;
+    }
+
+    menuButton.dataset.menuInitialized = "true";
+
+
+    /*
+     * Accessibility.
+     */
+
+    menuButton.setAttribute(
+        "aria-expanded",
+        "false"
+    );
+
+    menuButton.setAttribute(
+        "aria-controls",
+        menu.id || "mobileNavigation"
+    );
+
+
+    /*
+     * Add an ID if the menu doesn't have one.
+     */
+
+    if (!menu.id) {
+
+        menu.id =
+            "mobileNavigation";
+
+        menuButton.setAttribute(
+            "aria-controls",
+            "mobileNavigation"
+        );
+    }
+
+
+    /*
+     * Open / close menu.
+     */
+
+    menuButton.addEventListener(
+        "click",
+        function(event) {
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
+            const isOpen =
+                menu.classList.contains(
+                    "active"
+                );
+
+            if (isOpen) {
+
+                closeMobileMenu();
+
+            } else {
+
+                openMobileMenu();
+            }
+        }
+    );
+
+
+    /*
+     * Close when clicking a navigation link.
+     */
+
+    menu.querySelectorAll(
+        "a, button"
+    ).forEach(
+        item => {
+
+            if (
+                item === menuButton
+            ) {
+                return;
+            }
+
+            item.addEventListener(
+                "click",
+                function() {
+
+                    if (
+                        window.innerWidth <= 768
+                    ) {
+
+                        closeMobileMenu();
+                    }
+                }
+            );
+        }
+    );
+
+
+    /*
+     * Close when clicking outside.
+     */
+
+    document.addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                window.innerWidth > 768
+            ) {
+                return;
+            }
+
+            if (
+                !menu.contains(event.target) &&
+                !menuButton.contains(event.target)
+            ) {
+
+                closeMobileMenu();
+            }
+        }
+    );
+
+
+    /*
+     * Close with Escape.
+     */
+
+    document.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                closeMobileMenu();
+            }
+        }
+    );
+
+
+    /*
+     * Close menu when returning to desktop.
+     */
+
+    window.addEventListener(
+        "resize",
+        function() {
+
+            if (
+                window.innerWidth > 768
+            ) {
+
+                closeMobileMenu();
+            }
+        }
+    );
+
+
+    function openMobileMenu() {
+
+        menu.classList.add("active");
+
+        menuButton.classList.add("active");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
+        document.body.classList.add(
+            "menu-open"
+        );
+    }
+
+
+    function closeMobileMenu() {
+
+        menu.classList.remove("active");
+
+        menuButton.classList.remove("active");
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        document.body.classList.remove(
+            "menu-open"
+        );
+    }
 }
 
 
@@ -1511,20 +1474,14 @@ document.addEventListener(
     "click",
     function(event) {
 
-
         /*
-         * =================================================
-         * CLOSE BUTTON
-         * =================================================
-         *
-         * Extra safety handler.
+         * CLOSE MODAL
          */
 
         const closeButton =
             event.target.closest(
                 ".close-modal"
             );
-
 
         if (closeButton) {
 
@@ -1535,14 +1492,11 @@ document.addEventListener(
             closeModal();
 
             return;
-
         }
 
 
         /*
-         * =================================================
-         * WATCHLIST BUTTON
-         * =================================================
+         * WATCHLIST
          */
 
         const watchlistButton =
@@ -1550,28 +1504,22 @@ document.addEventListener(
                 ".watchlist-btn"
             );
 
-
         if (watchlistButton) {
 
             event.preventDefault();
 
             event.stopPropagation();
 
-
             toggleWatchlist(
                 watchlistButton.dataset.id
             );
 
-
             return;
-
         }
 
 
         /*
-         * =================================================
          * MOVIE CARD
-         * =================================================
          */
 
         const movieCard =
@@ -1579,28 +1527,31 @@ document.addEventListener(
                 ".movie-card"
             );
 
-
         if (movieCard) {
+
+            /*
+             * Don't open trailer when clicking
+             * buttons or links inside card.
+             */
+
+            if (
+                event.target.closest(
+                    "button, a, input, select"
+                )
+            ) {
+                return;
+            }
 
             event.preventDefault();
 
             const movieId =
                 movieCard.dataset.movieId;
 
-
             if (movieId) {
 
-                openTrailer(
-                    movieId
-                );
-
+                openTrailer(movieId);
             }
-
-
-            return;
-
         }
-
     }
 );
 
@@ -1617,67 +1568,49 @@ document.addEventListener(
             event.key !== "Enter" &&
             event.key !== " "
         ) {
-
             return;
-
         }
-
 
         const movieCard =
             event.target.closest(
                 ".movie-card"
             );
 
-
         if (!movieCard) return;
-
 
         if (
             event.target.closest(
                 ".watchlist-btn"
             )
         ) {
-
             return;
-
         }
 
-
         event.preventDefault();
-
 
         const movieId =
             movieCard.dataset.movieId;
 
-
         if (movieId) {
 
-            openTrailer(
-                movieId
-            );
-
+            openTrailer(movieId);
         }
-
     }
 );
 
 
 /* =========================================================
-   ESC KEY — CLOSE MODAL
+   ESC — CLOSE MODAL
    ========================================================= */
 
 document.addEventListener(
     "keydown",
     function(event) {
 
-        if (
-            event.key === "Escape"
-        ) {
+        if (event.key === "Escape") {
 
             closeModal();
-
         }
-
     }
 );
 
@@ -1724,6 +1657,13 @@ document.addEventListener(
 
 
         /*
+         * MOBILE HAMBURGER
+         */
+
+        setupMobileMenu();
+
+
+        /*
          * Watchlist
          */
 
@@ -1734,15 +1674,7 @@ document.addEventListener(
          * Movies
          */
 
-        if (
-            typeof loadPopularMovies ===
-            "function"
-        ) {
-
-            loadPopularMovies();
-
-        }
-
+        loadPopularMovies();
     }
 );
 
@@ -1780,3 +1712,6 @@ window.closeModal =
 
 window.setupThemeToggle =
     setupThemeToggle;
+
+window.setupMobileMenu =
+    setupMobileMenu;
