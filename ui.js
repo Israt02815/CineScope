@@ -473,7 +473,6 @@ async function performSearch(query) {
         await loadPopularMovies();
 
         return;
-
     }
 
     try {
@@ -535,7 +534,6 @@ function setupSearch() {
         );
 
         return;
-
     }
 
     if (button) {
@@ -554,7 +552,6 @@ function setupSearch() {
                     loadPopularMovies();
 
                     return;
-
                 }
 
                 performSearch(
@@ -584,7 +581,6 @@ function setupSearch() {
                     loadPopularMovies();
 
                     return;
-
                 }
 
                 performSearch(
@@ -749,7 +745,6 @@ function setupGenres() {
                         );
 
                         return;
-
                     }
 
                     try {
@@ -916,7 +911,6 @@ function renderWatchlist() {
         `;
 
         return;
-
     }
 
     grid.innerHTML =
@@ -1159,8 +1153,7 @@ async function openTrailer(id) {
 
         /*
          * =====================================================
-         * IMPORTANT FIX
-         * Directly attach the close button event here.
+         * CLOSE BUTTON
          * =====================================================
          */
 
@@ -1189,7 +1182,9 @@ async function openTrailer(id) {
 
 
         /*
-         * Show modal
+         * =====================================================
+         * SHOW MODAL
+         * =====================================================
          */
 
         modal.classList.add(
@@ -1206,7 +1201,9 @@ async function openTrailer(id) {
 
 
         /*
-         * Get trailer videos
+         * =====================================================
+         * GET TRAILER VIDEOS
+         * =====================================================
          */
 
         const videos =
@@ -1216,7 +1213,9 @@ async function openTrailer(id) {
 
 
         /*
-         * Find the best trailer
+         * =====================================================
+         * FIND BEST TRAILER
+         * =====================================================
          */
 
         const trailer =
@@ -1256,7 +1255,9 @@ async function openTrailer(id) {
 
 
         /*
-         * If trailer exists
+         * =====================================================
+         * TRAILER FOUND
+         * =====================================================
          */
 
         if (trailer) {
@@ -1266,7 +1267,7 @@ async function openTrailer(id) {
                 <div class="trailer-click-area">
 
                     <iframe
-                        src="https://www.youtube.com/embed/${trailer.key}?rel=0&modestbranding=1"
+                        src="https://www.youtube-nocookie.com/embed/${trailer.key}?autoplay=1&rel=0&modestbranding=1&origin=${encodeURIComponent(window.location.origin)}"
                         title="${escapeHTML(
                             movie.title ||
                             movie.name ||
@@ -1285,7 +1286,9 @@ async function openTrailer(id) {
 
 
         /*
-         * No trailer
+         * =====================================================
+         * NO TRAILER
+         * =====================================================
          */
 
         else {
@@ -1418,10 +1421,12 @@ function setupThemeToggle() {
                 "dark-theme"
             );
 
+
             const isDark =
                 document.body.classList.contains(
                     "dark-theme"
                 );
+
 
             localStorage.setItem(
                 "cinescopeTheme",
@@ -1429,6 +1434,7 @@ function setupThemeToggle() {
                     ? "dark"
                     : "light"
             );
+
 
             updateThemeIcon();
 
@@ -1471,10 +1477,12 @@ function updateThemeIcon() {
         icon.className =
             "fa-solid fa-sun";
 
+
         themeButton.setAttribute(
             "aria-label",
             "Switch to light theme"
         );
+
 
         themeButton.setAttribute(
             "title",
@@ -1488,10 +1496,12 @@ function updateThemeIcon() {
         icon.className =
             "fa-solid fa-moon";
 
+
         themeButton.setAttribute(
             "aria-label",
             "Switch to dark theme"
         );
+
 
         themeButton.setAttribute(
             "title",
@@ -1516,8 +1526,6 @@ document.addEventListener(
          * =================================================
          * CLOSE BUTTON
          * =================================================
-         *
-         * Extra safety handler.
          */
 
         const closeButton =
@@ -1583,6 +1591,7 @@ document.addEventListener(
         if (movieCard) {
 
             event.preventDefault();
+
 
             const movieId =
                 movieCard.dataset.movieId;
