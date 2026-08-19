@@ -1,0 +1,854 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="referrer"
+        content="strict-origin-when-cross-origin"
+    >
+
+    <meta
+        name="description"
+        content="CineScope — discover movies, explore new releases, hidden gems and build your personal watchlist."
+    >
+
+    <title>CineScope | Movie Discovery</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- Main CSS -->
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         NAVIGATION
+         ===================================================== -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <!-- LOGO -->
+
+            <a
+                href="#home"
+                class="logo"
+            >
+                <span class="logo-main">Cine</span>
+                <span class="logo-accent">Scope</span>
+            </a>
+
+
+            <!-- NAVIGATION -->
+
+            <nav class="nav-links">
+
+                <a
+                    href="#home"
+                    class="nav-link active"
+                >
+                    Home
+                </a>
+
+                <a
+                    href="#movies"
+                    class="nav-link"
+                >
+                    Movies
+                </a>
+
+                <a
+                    href="#genres"
+                    class="nav-link"
+                >
+                    Genres
+                </a>
+
+                <a
+                    href="#watchlist"
+                    class="nav-link"
+                >
+                    Watchlist
+                </a>
+
+            </nav>
+
+
+            <!-- NAV ACTIONS -->
+
+            <div class="nav-actions">
+
+                <button
+                    class="theme-toggle"
+                    type="button"
+                    aria-label="Toggle theme"
+                >
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <button
+                    class="mobile-menu"
+                    type="button"
+                    aria-label="Open navigation"
+                >
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         MAIN
+         ===================================================== -->
+
+    <main>
+
+
+        <!-- =================================================
+             HERO / CTA VIDEO
+             ================================================= -->
+
+        <section
+            class="hero"
+            id="home"
+        >
+
+            <!-- VIDEO BACKGROUND -->
+
+            <div class="hero-video-wrapper">
+
+                <video
+                    id="heroVideo"
+                    class="hero-video"
+                    autoplay
+                    muted
+                    playsinline
+                    preload="auto"
+                >
+
+                    <source
+                        src="videos/hero-trailer.mp4"
+                        type="video/mp4"
+                    >
+
+                    Your browser does not support HTML5 video.
+
+                </video>
+
+            </div>
+
+
+            <!-- CINEMATIC OVERLAY -->
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-gradient"></div>
+
+
+            <!-- HERO CONTENT -->
+
+            <div class="hero-content">
+
+                <div class="hero-meta">
+
+                    <span class="live-dot"></span>
+
+                    <span>NOW PLAYING</span>
+
+                </div>
+
+
+                <h1>
+                    Find your next
+                    <em>great story.</em>
+                </h1>
+
+
+                <p class="hero-description">
+                    Search for something worth watching,
+                    discover new favourites, and decide
+                    what plays next.
+                </p>
+
+
+                <!-- SINGLE SEARCH -->
+
+                <div class="cinematic-search">
+
+                    <div class="search-field">
+
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+
+                        <input
+                            type="search"
+                            id="searchInput"
+                            placeholder="Search movies..."
+                            aria-label="Search for a movie"
+                            autocomplete="off"
+                        >
+
+                        <button
+                            type="button"
+                            id="searchButton"
+                            class="search-button"
+                            aria-label="Search movies"
+                        >
+                            <span>Search</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HERO INFO -->
+
+                <div class="hero-info">
+
+                    <span>New releases</span>
+
+                    <span class="info-dot">•</span>
+
+                    <span>Top rated</span>
+
+                    <span class="info-dot">•</span>
+
+                    <span>Your watchlist</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- VIDEO LABEL -->
+
+            <div class="hero-video-label">
+
+                <span class="trailer-label">
+                    FEATURED TRAILER
+                </span>
+
+                <span
+                    class="video-title"
+                    id="heroVideoTitle"
+                >
+                    Spider-Man: Brand New Day
+                </span>
+
+            </div>
+
+
+            <!-- VIDEO PROGRESS -->
+
+            <div class="hero-progress">
+
+                <div
+                    class="hero-progress-bar"
+                    id="heroProgressBar"
+                ></div>
+
+            </div>
+
+
+            <!-- SCROLL -->
+
+            <a
+                href="#movies"
+                class="scroll-indicator"
+            >
+
+                <span>SCROLL TO EXPLORE</span>
+
+                <i class="fa-solid fa-arrow-down"></i>
+
+            </a>
+
+        </section>
+
+
+        <!-- =================================================
+             MOVIES
+             ================================================= -->
+
+        <section
+            class="movies-section"
+            id="movies"
+        >
+
+            <div class="section-container">
+
+
+                <!-- SECTION HEADER -->
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="section-label">
+                            THE CATALOGUE
+                        </span>
+
+                        <h2 id="resultsTitle">
+                            Explore
+                        </h2>
+
+                    </div>
+
+
+                    <!-- SORT ONLY -->
+
+                    <div class="sort-wrapper">
+
+                        <label
+                            for="sortMovies"
+                            class="sort-label"
+                        >
+                            Sort by
+                        </label>
+
+                        <select
+                            id="sortMovies"
+                            aria-label="Sort movies"
+                        >
+
+                            <option value="popular">
+                                Most Popular
+                            </option>
+
+                            <option value="rating">
+                                Highest Rated
+                            </option>
+
+                            <option value="newest">
+                                Newest
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MOVIE GRID -->
+
+                <div
+                    class="movie-grid"
+                    id="movieGrid"
+                >
+
+                    <div class="loading">
+
+                        <div class="loader"></div>
+
+                        <p>
+                            Discovering movies...
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             GENRES
+             ================================================= -->
+
+        <section
+            class="genres-section"
+            id="genres"
+        >
+
+            <div class="section-container">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="section-label">
+                            EXPLORE BY
+                        </span>
+
+                        <h2>
+                            Genre
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="genre-grid">
+
+
+                    <button
+                        class="genre-card"
+                        data-genre-id="28"
+                        type="button"
+                    >
+
+                        <span class="genre-icon">
+                            ⚡
+                        </span>
+
+                        <span>
+                            Action
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="genre-card"
+                        data-genre-id="35"
+                        type="button"
+                    >
+
+                        <span class="genre-icon">
+                            ☺
+                        </span>
+
+                        <span>
+                            Comedy
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="genre-card"
+                        data-genre-id="18"
+                        type="button"
+                    >
+
+                        <span class="genre-icon">
+                            ♢
+                        </span>
+
+                        <span>
+                            Drama
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="genre-card"
+                        data-genre-id="27"
+                        type="button"
+                    >
+
+                        <span class="genre-icon">
+                            ☾
+                        </span>
+
+                        <span>
+                            Horror
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="genre-card"
+                        data-genre-id="878"
+                        type="button"
+                    >
+
+                        <span class="genre-icon">
+                            ✦
+                        </span>
+
+                        <span>
+                            Sci-Fi
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="genre-card"
+                        data-genre-id="10749"
+                        type="button"
+                    >
+
+                        <span class="genre-icon">
+                            ♡
+                        </span>
+
+                        <span>
+                            Romance
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="genre-card"
+                        data-genre-id="53"
+                        type="button"
+                    >
+
+                        <span class="genre-icon">
+                            ◈
+                        </span>
+
+                        <span>
+                            Thriller
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        class="genre-card"
+                        data-genre-id="16"
+                        type="button"
+                    >
+
+                        <span class="genre-icon">
+                            ✧
+                        </span>
+
+                        <span>
+                            Animation
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             WATCHLIST
+             ================================================= -->
+
+        <section
+            class="watchlist-section"
+            id="watchlist"
+        >
+
+            <div class="section-container">
+
+                <div class="watchlist-header">
+
+                    <div>
+
+                        <span class="section-label">
+                            YOUR COLLECTION
+                        </span>
+
+                        <h2>
+                            Your Watchlist
+                        </h2>
+
+                        <p>
+                            Save movies you want to watch later.
+                        </p>
+
+                    </div>
+
+
+                    <div class="watchlist-decoration">
+                        <span>♡</span>
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="watchlist-grid"
+                    id="watchlistGrid"
+                >
+
+                    <div class="no-results">
+
+                        <div class="empty-icon">
+                            ♡
+                        </div>
+
+                        <h3>
+                            Your collection is waiting.
+                        </h3>
+
+                        <p>
+                            Add movies you want to watch later.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         MOVIE DETAILS MODAL
+         ===================================================== -->
+
+    <div
+        class="modal"
+        id="movieModal"
+        aria-hidden="true"
+    >
+
+        <div class="modal-content"></div>
+
+    </div>
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+
+            <div class="footer-brand">
+
+                <a
+                    href="#home"
+                    class="logo"
+                >
+
+                    <span class="logo-main">
+                        Cine
+                    </span>
+
+                    <span class="logo-accent">
+                        Scope
+                    </span>
+
+                </a>
+
+                <p>
+                    Discover your next favorite movie.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="#home">
+                    Home
+                </a>
+
+                <a href="#movies">
+                    Movies
+                </a>
+
+                <a href="#genres">
+                    Genres
+                </a>
+
+                <a href="#watchlist">
+                    Watchlist
+                </a>
+
+            </div>
+
+
+            <div class="footer-credit">
+
+                <p>
+                    Powered by TMDB
+                </p>
+
+                <p class="copyright">
+                    © 2026 CineScope
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =====================================================
+         HERO VIDEO CONTROLLER
+         ===================================================== -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const video = document.getElementById("heroVideo");
+            const progressBar = document.getElementById("heroProgressBar");
+            const videoTitle = document.getElementById("heroVideoTitle");
+
+            if (!video) return;
+
+
+            /*
+             * YOUR TWO VIDEOS
+             *
+             * Put both files inside:
+             *
+             * videos/
+             *
+             * hero-trailer.mp4
+             * avengers-doomsday.mp4
+             */
+
+            const videos = [
+                {
+                    src: "videos/hero-trailer.mp4",
+                    title: "Spider-Man: Brand New Day"
+                },
+                {
+                    src: "videos/avengers-doomsday.mp4",
+                    title: "Avengers: Doomsday"
+                }
+            ];
+
+
+            let currentVideo = 0;
+
+
+            function playVideo(index) {
+
+                currentVideo = index;
+
+                video.pause();
+
+                video.src = videos[index].src;
+
+                video.load();
+
+                if (videoTitle) {
+                    videoTitle.textContent = videos[index].title;
+                }
+
+                video.play().catch(function () {
+                    console.log("Video autoplay was prevented.");
+                });
+
+            }
+
+
+            /*
+             * When one video finishes,
+             * automatically play the next one.
+             */
+
+            video.addEventListener("ended", function () {
+
+                currentVideo++;
+
+                if (currentVideo >= videos.length) {
+                    currentVideo = 0;
+                }
+
+                playVideo(currentVideo);
+
+            });
+
+
+            /*
+             * Progress indicator
+             */
+
+            video.addEventListener("timeupdate", function () {
+
+                if (
+                    video.duration &&
+                    isFinite(video.duration)
+                ) {
+
+                    const percentage =
+                        (video.currentTime / video.duration) * 100;
+
+                    if (progressBar) {
+                        progressBar.style.width =
+                            percentage + "%";
+                    }
+
+                }
+
+            });
+
+
+            /*
+             * Reset progress when new video starts
+             */
+
+            video.addEventListener("loadedmetadata", function () {
+
+                if (progressBar) {
+                    progressBar.style.width = "0%";
+                }
+
+            });
+
+
+            /*
+             * Start with Spider-Man.
+             */
+
+            playVideo(0);
+
+        });
+
+    </script>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         ===================================================== -->
+
+    <script src="js/api.js"></script>
+
+    <script src="js/ui.js"></script>
+
+
+</body>
+
+</html>
