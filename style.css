@@ -1,9 +1,9 @@
 
-:root {
-    /* =====================================================
-       CINE SCOPE — WARM CINEMA LIGHT THEME
-       ===================================================== */
+/* =========================================================
+   CINE SCOPE — CLEANED MASTER STYLE
+   ========================================================= */
 
+:root {
     --bg: #f5f0e8;
     --bg-soft: #ebe3d6;
 
@@ -23,8 +23,7 @@
 
     --border: rgba(52, 40, 32, 0.12);
 
-    --shadow:
-        0 25px 70px rgba(49, 36, 27, 0.15);
+    --shadow: 0 25px 70px rgba(49, 36, 27, 0.15);
 
     --radius: 20px;
 }
@@ -54,8 +53,7 @@ body.dark-theme {
 
     --border: rgba(255, 255, 255, 0.10);
 
-    --shadow:
-        0 25px 70px rgba(0, 0, 0, 0.40);
+    --shadow: 0 25px 70px rgba(0, 0, 0, 0.40);
 }
 
 
@@ -76,10 +74,8 @@ html {
 body {
     background: var(--bg);
     color: var(--text);
-
     font-family: "DM Sans", sans-serif;
     line-height: 1.6;
-
     overflow-x: hidden;
 
     transition:
@@ -121,12 +117,10 @@ select {
 
 .navbar {
     position: fixed;
-
     top: 0;
     left: 0;
 
     width: 100%;
-
     z-index: 1000;
 
     background:
@@ -274,19 +268,14 @@ select {
 }
 
 body.dark-theme .theme-toggle {
-    background:
-        rgba(217, 184, 143, 0.13);
-
-    border-color:
-        rgba(217, 184, 143, 0.40);
+    background: rgba(217, 184, 143, 0.13);
+    border-color: rgba(217, 184, 143, 0.40);
 
     color: #d9b88f;
 }
 
 body.dark-theme .theme-toggle:hover {
-    background:
-        rgba(217, 184, 143, 0.22);
-
+    background: rgba(217, 184, 143, 0.22);
     border-color: #d9b88f;
 }
 
@@ -338,7 +327,7 @@ body.dark-theme .theme-toggle:hover {
 
 
 /* =========================================================
-   HERO OVERLAY
+   HERO OVERLAYS
    ========================================================= */
 
 .hero-overlay {
@@ -442,18 +431,15 @@ body.dark-theme .hero-gradient {
 
 
 /* =========================================================
-   HERO HEADING
+   HERO TITLE
    ========================================================= */
 
 .hero h1 {
     max-width: 720px;
 
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family: "Playfair Display", serif;
 
-    font-size:
-        clamp(52px, 7vw, 105px);
+    font-size: clamp(52px, 7vw, 105px);
 
     font-weight: 600;
 
@@ -483,11 +469,9 @@ body.dark-theme .hero-gradient {
 .hero-description {
     max-width: 530px;
 
-    color:
-        rgba(255, 250, 242, 0.74);
+    color: rgba(255, 250, 242, 0.74);
 
     font-size: 16px;
-
     line-height: 1.8;
 
     margin-bottom: 30px;
@@ -514,14 +498,11 @@ body.dark-theme .hero-gradient {
 
     padding: 6px;
 
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.22);
 
     border-radius: 14px;
 
-    background:
-        rgba(30, 23, 22, 0.72);
+    background: rgba(30, 23, 22, 0.72);
 
     backdrop-filter: blur(20px);
 
@@ -551,9 +532,7 @@ body.dark-theme .hero-gradient {
 
 .search-icon {
     margin-left: 18px;
-
     color: #d9b88f;
-
     font-size: 15px;
 }
 
@@ -577,8 +556,7 @@ body.dark-theme .hero-gradient {
 }
 
 .search-field input::placeholder {
-    color:
-        rgba(255, 255, 255, 0.48);
+    color: rgba(255, 255, 255, 0.48);
 }
 
 .search-button {
@@ -609,7 +587,6 @@ body.dark-theme .hero-gradient {
 
 .search-button:hover {
     background: #e8cca7;
-
     transform: translateX(2px);
 }
 
@@ -630,11 +607,9 @@ body.dark-theme .hero-gradient {
 
     margin-top: 18px;
 
-    color:
-        rgba(255, 255, 255, 0.50);
+    color: rgba(255, 255, 255, 0.50);
 
     font-size: 11px;
-
     letter-spacing: 0.8px;
 }
 
@@ -644,7 +619,7 @@ body.dark-theme .hero-gradient {
 
 
 /* =========================================================
-   VIDEO TITLE
+   HERO VIDEO LABEL
    ========================================================= */
 
 .hero-video-label {
@@ -674,8 +649,7 @@ body.dark-theme .hero-gradient {
 }
 
 .video-title {
-    color:
-        rgba(255, 255, 255, 0.86);
+    color: rgba(255, 255, 255, 0.86);
 
     font-size: 13px;
     font-weight: 600;
@@ -683,7 +657,7 @@ body.dark-theme .hero-gradient {
 
 
 /* =========================================================
-   VIDEO PROGRESS
+   PROGRESS
    ========================================================= */
 
 .hero-progress {
@@ -697,8 +671,7 @@ body.dark-theme .hero-gradient {
     width: 100%;
     height: 3px;
 
-    background:
-        rgba(45, 32, 27, 0.20);
+    background: rgba(45, 32, 27, 0.20);
 }
 
 .hero-progress-bar {
@@ -707,13 +680,12 @@ body.dark-theme .hero-gradient {
 
     background: #9b6b3f;
 
-    transition:
-        width 0.15s linear;
+    transition: width 0.15s linear;
 }
 
 
 /* =========================================================
-   SCROLL INDICATOR
+   SCROLL
    ========================================================= */
 
 .scroll-indicator {
@@ -729,8 +701,7 @@ body.dark-theme .hero-gradient {
 
     gap: 12px;
 
-    color:
-        rgba(255, 255, 255, 0.60);
+    color: rgba(255, 255, 255, 0.60);
 
     font-size: 9px;
 
@@ -747,15 +718,13 @@ body.dark-theme .hero-gradient {
 
 
 /* =========================================================
-   MOVIES SECTION
+   GENERAL SECTION
    ========================================================= */
 
 .movies-section {
     position: relative;
 
-    padding:
-        110px 0
-        120px;
+    padding: 110px 0 120px;
 
     background:
         radial-gradient(
@@ -765,8 +734,7 @@ body.dark-theme .hero-gradient {
         ),
         var(--bg);
 
-    transition:
-        background 0.35s ease;
+    transition: background 0.35s ease;
 }
 
 .section-container {
@@ -804,12 +772,9 @@ body.dark-theme .hero-gradient {
 }
 
 .section-heading h2 {
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family: "Playfair Display", serif;
 
-    font-size:
-        clamp(38px, 5vw, 60px);
+    font-size: clamp(38px, 5vw, 60px);
 
     font-weight: 600;
 
@@ -819,8 +784,7 @@ body.dark-theme .hero-gradient {
 
     color: var(--plum);
 
-    transition:
-        color 0.35s ease;
+    transition: color 0.35s ease;
 }
 
 
@@ -837,22 +801,15 @@ body.dark-theme .hero-gradient {
 
 .sort-label {
     color: var(--text-muted);
-
     font-size: 12px;
 }
 
 .sort-wrapper select {
     min-width: 170px;
 
-    padding:
-        12px
-        38px
-        12px
-        14px;
+    padding: 12px 38px 12px 14px;
 
-    border:
-        1px solid
-        var(--border);
+    border: 1px solid var(--border);
 
     border-radius: 9px;
 
@@ -869,9 +826,7 @@ body.dark-theme .hero-gradient {
 }
 
 .sort-wrapper select:focus {
-    border-color:
-        rgba(155, 107, 63, 0.55);
-
+    border-color: rgba(155, 107, 63, 0.55);
     outline: none;
 }
 
@@ -889,11 +844,6 @@ body.dark-theme .hero-gradient {
     gap: 24px;
 }
 
-
-/* =========================================================
-   MOVIE CARDS
-   ========================================================= */
-
 .movie-card {
     position: relative;
 
@@ -903,9 +853,7 @@ body.dark-theme .hero-gradient {
 
     background: var(--surface);
 
-    border:
-        1px solid
-        var(--border);
+    border: 1px solid var(--border);
 
     cursor: pointer;
 
@@ -939,11 +887,6 @@ body.dark-theme .hero-gradient {
     object-fit: cover;
 }
 
-
-/* =========================================================
-   MOVIE CARD CONTENT
-   ========================================================= */
-
 .movie-card-content {
     padding: 17px;
 }
@@ -952,7 +895,6 @@ body.dark-theme .hero-gradient {
     color: var(--text);
 
     font-size: 15px;
-
     line-height: 1.35;
 }
 
@@ -977,7 +919,6 @@ body.dark-theme .hero-gradient {
     color: var(--text);
 
     font-size: 15px;
-
     line-height: 1.35;
 }
 
@@ -1027,14 +968,11 @@ body.dark-theme .hero-gradient {
     display: grid;
     place-items: center;
 
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.22);
 
     border-radius: 50%;
 
-    background:
-        rgba(20, 15, 15, 0.60);
+    background: rgba(20, 15, 15, 0.60);
 
     backdrop-filter: blur(10px);
 
@@ -1049,8 +987,7 @@ body.dark-theme .hero-gradient {
 }
 
 .movie-action:hover {
-    background:
-        rgba(217, 184, 143, 0.95);
+    background: rgba(217, 184, 143, 0.95);
 
     color: #2b211c;
 
@@ -1088,8 +1025,7 @@ body.dark-theme .hero-gradient {
         2px solid
         rgba(50, 40, 33, 0.12);
 
-    border-top-color:
-        var(--accent);
+    border-top-color: var(--accent);
 
     animation:
         spin 0.8s linear infinite;
@@ -1117,9 +1053,7 @@ body.dark-theme .loader {
 .genres-section {
     position: relative;
 
-    padding:
-        120px 0
-        125px;
+    padding: 120px 0 125px;
 
     background:
         radial-gradient(
@@ -1173,7 +1107,6 @@ body.dark-theme .loader {
 
 .genres-section .section-container {
     position: relative;
-
     z-index: 2;
 }
 
@@ -1181,7 +1114,6 @@ body.dark-theme .loader {
     margin-bottom: 10px;
 
     font-size: 10px;
-
     letter-spacing: 3px;
 }
 
@@ -1190,8 +1122,7 @@ body.dark-theme .loader {
 }
 
 .genres-section .section-heading h2 {
-    font-size:
-        clamp(42px, 5vw, 64px);
+    font-size: clamp(42px, 5vw, 64px);
 
     color: var(--plum);
 }
@@ -1209,11 +1140,6 @@ body.dark-theme .loader {
 
     gap: 18px;
 }
-
-
-/* =========================================================
-   GENRE CARD
-   ========================================================= */
 
 .genre-card {
     position: relative;
@@ -1271,7 +1197,6 @@ body.dark-theme .loader {
         serif;
 
     font-size: 110px;
-
     font-weight: 600;
 
     line-height: 1;
@@ -1343,7 +1268,7 @@ body.dark-theme .loader {
 
 
 /* =========================================================
-   DARK GENRE CARD
+   DARK GENRE
    ========================================================= */
 
 body.dark-theme .genre-card {
@@ -1442,12 +1367,9 @@ body.dark-theme .genre-icon {
 .genre-card > span:last-child {
     position: relative;
 
-    font-family:
-        "DM Sans",
-        sans-serif;
+    font-family: "DM Sans", sans-serif;
 
     font-size: 16px;
-
     font-weight: 700;
 
     letter-spacing: -0.2px;
@@ -1520,18 +1442,16 @@ body.dark-theme .genre-icon {
    ========================================================= */
 
 .watchlist-section {
-    padding:
-        115px 0
-        130px;
+    padding: 115px 0 130px;
 
     background: var(--bg);
 
-    transition:
-        background 0.35s ease;
+    transition: background 0.35s ease;
 }
 
 .watchlist-header {
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 
@@ -1669,7 +1589,7 @@ body.dark-theme .no-results {
 
 
 /* =========================================================
-   FOOTER
+   FOOTER — SINGLE CLEAN VERSION
    ========================================================= */
 
 .footer {
@@ -1679,29 +1599,33 @@ body.dark-theme .no-results {
 
     width: 100%;
 
-    min-height: 180px;
-
     padding: 60px 0;
 
     background: #33252d;
 
     border-top:
         1px solid
-        rgba(52, 40, 32, 0.12);
+        rgba(217, 184, 143, 0.18);
 
     color: #fff8ef;
 
     display: block;
 
     visibility: visible;
-
     opacity: 1;
+
+    overflow: visible;
 
     transition:
         background-color 0.35s ease,
         color 0.35s ease,
         border-color 0.35s ease;
 }
+
+
+/* =========================================================
+   FOOTER CONTAINER
+   ========================================================= */
 
 .footer-container {
     width: min(1400px, calc(100% - 60px));
@@ -1718,8 +1642,15 @@ body.dark-theme .no-results {
     align-items: end;
 }
 
+
+/* =========================================================
+   FOOTER BRAND
+   ========================================================= */
+
 .footer-brand {
     display: block;
+
+    min-width: 0;
 }
 
 .footer-brand .logo {
@@ -1735,6 +1666,8 @@ body.dark-theme .no-results {
 }
 
 .footer-brand p {
+    max-width: 420px;
+
     margin-top: 10px;
 
     color:
@@ -1744,6 +1677,11 @@ body.dark-theme .no-results {
 
     line-height: 1.7;
 }
+
+
+/* =========================================================
+   FOOTER LINKS
+   ========================================================= */
 
 .footer-links {
     display: flex;
@@ -1767,8 +1705,14 @@ body.dark-theme .no-results {
 .footer-links a:hover {
     color: #e0bd91;
 
-    transform: translateY(-1px);
+    transform:
+        translateY(-1px);
 }
+
+
+/* =========================================================
+   FOOTER CREDIT
+   ========================================================= */
 
 .footer-credit {
     text-align: right;
@@ -1840,7 +1784,6 @@ body.dark-theme .copyright {
 
 .modal {
     position: fixed;
-
     inset: 0;
 
     z-index: 2000;
@@ -1855,7 +1798,8 @@ body.dark-theme .copyright {
     background:
         rgba(25, 18, 17, 0.88);
 
-    backdrop-filter: blur(16px);
+    backdrop-filter:
+        blur(16px);
 }
 
 .modal.active {
@@ -1865,9 +1809,11 @@ body.dark-theme .copyright {
 .modal-content {
     position: relative;
 
-    width: min(1200px, 96vw);
+    width:
+        min(1200px, 96vw);
 
-    max-height: 94vh;
+    max-height:
+        94vh;
 
     overflow-y: auto;
 
@@ -1907,7 +1853,7 @@ body.dark-theme .copyright {
 
 
 /* =========================================================
-   CLOSE BUTTON
+   CLOSE MODAL
    ========================================================= */
 
 .close-modal {
@@ -1952,12 +1898,13 @@ body.dark-theme .copyright {
 
     border-color: #d9b88f;
 
-    transform: rotate(90deg);
+    transform:
+        rotate(90deg);
 }
 
 
 /* =========================================================
-   TRAILER PLAYER
+   TRAILER
    ========================================================= */
 
 .trailer-player {
@@ -1976,7 +1923,6 @@ body.dark-theme .copyright {
 
 .trailer-player iframe {
     position: absolute;
-
     inset: 0;
 
     width: 100%;
@@ -1989,7 +1935,6 @@ body.dark-theme .copyright {
 
 .trailer-click-area {
     position: absolute;
-
     inset: 0;
 
     width: 100%;
@@ -2033,7 +1978,6 @@ body.dark-theme .copyright {
     min-height: 500px;
 
     display: flex;
-
     flex-direction: column;
 
     align-items: center;
@@ -2113,7 +2057,7 @@ body.dark-theme .copyright {
 
 
 /* =========================================================
-   TABLET / SMALL LAPTOP
+   TABLET — 1100px
    ========================================================= */
 
 @media (max-width: 1100px) {
@@ -2129,31 +2073,30 @@ body.dark-theme .copyright {
             repeat(3, minmax(0, 1fr));
     }
 
-    .hero-video-label {
-        right: 30px;
-    }
-
+    .hero-video-label,
     .scroll-indicator {
         right: 30px;
     }
 
     .modal-content {
-        width: min(1100px, 95vw);
+        width:
+            min(1100px, 95vw);
     }
 }
 
 
 /* =========================================================
-   TABLET
+   TABLET / SMALL LAPTOP — 850px
    ========================================================= */
 
 @media (max-width: 850px) {
+
+    /* NAV */
 
     .nav-links {
         position: fixed;
 
         top: 75px;
-
         left: 20px;
         right: 20px;
 
@@ -2176,7 +2119,8 @@ body.dark-theme .copyright {
         background:
             rgba(45, 32, 31, 0.96);
 
-        backdrop-filter: blur(20px);
+        backdrop-filter:
+            blur(20px);
     }
 
     .nav-links.open {
@@ -2187,6 +2131,9 @@ body.dark-theme .copyright {
         display: grid;
     }
 
+
+    /* HERO */
+
     .hero-content {
         padding-bottom: 120px;
     }
@@ -2195,24 +2142,37 @@ body.dark-theme .copyright {
         display: none;
     }
 
+
+    /* GRIDS */
+
     .movie-grid,
-    .genre-grid,
     .watchlist-grid {
         grid-template-columns:
             repeat(2, minmax(0, 1fr));
     }
 
+    .genre-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    /* FOOTER */
+
     .footer-container {
         grid-template-columns: 1fr;
 
-        align-items: start;
-
         gap: 30px;
+
+        align-items: start;
     }
 
     .footer-credit {
         text-align: left;
     }
+
+
+    /* MODAL */
 
     .modal {
         padding: 15px;
@@ -2220,7 +2180,6 @@ body.dark-theme .copyright {
 
     .modal-content {
         width: 96vw;
-
         max-height: 92vh;
     }
 
@@ -2231,7 +2190,7 @@ body.dark-theme .copyright {
 
 
 /* =========================================================
-   MOBILE
+   MOBILE — 600px
    ========================================================= */
 
 @media (max-width: 600px) {
@@ -2241,22 +2200,18 @@ body.dark-theme .copyright {
     .hero-content,
     .footer-container {
         width:
-            min(
-                calc(100% - 32px),
-                1400px
-            );
+            calc(100% - 32px);
     }
 
 
-    /* -----------------------------------------------------
-       NAVBAR
-       ----------------------------------------------------- */
+    /* NAV */
 
     .navbar {
         background:
             rgba(45, 32, 31, 0.86);
 
-        backdrop-filter: blur(18px);
+        backdrop-filter:
+            blur(18px);
     }
 
     .nav-container {
@@ -2271,9 +2226,7 @@ body.dark-theme .copyright {
     }
 
 
-    /* -----------------------------------------------------
-       HERO
-       ----------------------------------------------------- */
+    /* HERO */
 
     .hero {
         min-height: 100svh;
@@ -2314,7 +2267,6 @@ body.dark-theme .copyright {
 
     .hero-meta {
         font-size: 9px;
-
         letter-spacing: 1.8px;
     }
 
@@ -2336,9 +2288,7 @@ body.dark-theme .copyright {
     }
 
 
-    /* -----------------------------------------------------
-       SEARCH
-       ----------------------------------------------------- */
+    /* SEARCH */
 
     .search-field {
         height: 58px;
@@ -2346,7 +2296,6 @@ body.dark-theme .copyright {
 
     .search-button {
         width: 46px;
-
         padding: 0;
     }
 
@@ -2367,19 +2316,12 @@ body.dark-theme .copyright {
     }
 
 
-    /* -----------------------------------------------------
-       SECTIONS
-       ----------------------------------------------------- */
+    /* SECTIONS */
 
     .movies-section,
+    .genres-section,
     .watchlist-section {
         padding: 80px 0;
-    }
-
-    .genres-section {
-        padding:
-            85px 0
-            90px;
     }
 
     .section-heading {
@@ -2399,9 +2341,7 @@ body.dark-theme .copyright {
     }
 
 
-    /* -----------------------------------------------------
-       MOVIES
-       ----------------------------------------------------- */
+    /* MOVIES */
 
     .movie-grid,
     .watchlist-grid {
@@ -2425,9 +2365,12 @@ body.dark-theme .copyright {
     }
 
 
-    /* -----------------------------------------------------
-       GENRES
-       ----------------------------------------------------- */
+    /* GENRES */
+
+    .genres-section {
+        padding:
+            85px 0 90px;
+    }
 
     .genres-section .section-heading {
         margin-bottom: 30px;
@@ -2457,7 +2400,6 @@ body.dark-theme .copyright {
         font-size: 80px;
 
         right: -5px;
-
         bottom: -18px;
     }
 
@@ -2483,13 +2425,12 @@ body.dark-theme .copyright {
     }
 
     .genre-card:hover {
-        transform: translateY(-5px);
+        transform:
+            translateY(-5px);
     }
 
 
-    /* -----------------------------------------------------
-       WATCHLIST
-       ----------------------------------------------------- */
+    /* WATCHLIST */
 
     .watchlist-header {
         align-items: flex-start;
@@ -2505,38 +2446,30 @@ body.dark-theme .copyright {
     }
 
 
-    /* -----------------------------------------------------
-       FOOTER
-       ----------------------------------------------------- */
+    /* =====================================================
+       FOOTER — MOBILE
+       ===================================================== */
 
     .footer {
         position: relative;
 
-        z-index: 20;
+        z-index: 100;
 
         width: 100%;
 
-        min-height: 260px;
+        min-height: auto;
 
         padding:
-            45px 0
-            50px;
+            50px 0 55px;
 
-        background: #33252d;
-
-        color: #fff8ef;
+        display: block;
 
         overflow: visible;
-
-        visibility: visible;
-
-        opacity: 1;
     }
 
     .footer-container {
-        width: calc(100% - 32px);
-
-        max-width: none;
+        width:
+            calc(100% - 32px);
 
         margin: 0 auto;
 
@@ -2559,27 +2492,14 @@ body.dark-theme .copyright {
         display: inline-flex;
     }
 
-    .footer-brand .logo-main {
-        color: #fffaf2 !important;
-    }
-
-    .footer-brand .logo-accent {
-        color: #d9b88f !important;
-    }
-
     .footer-brand p {
         max-width: 330px;
 
         margin-top: 10px;
 
-        color:
-            rgba(255, 248, 239, 0.72) !important;
-
         font-size: 13px;
 
         line-height: 1.7;
-
-        display: block;
     }
 
     .footer-links {
@@ -2597,14 +2517,7 @@ body.dark-theme .copyright {
     .footer-links a {
         display: inline-block;
 
-        color:
-            rgba(255, 248, 239, 0.78) !important;
-
         font-size: 13px;
-    }
-
-    .footer-links a:hover {
-        color: #e0bd91 !important;
     }
 
     .footer-credit {
@@ -2614,72 +2527,15 @@ body.dark-theme .copyright {
 
         text-align: left;
 
-        color:
-            rgba(255, 248, 239, 0.68) !important;
-
         font-size: 12px;
     }
 
     .copyright {
         margin-top: 6px;
-
-        color:
-            rgba(255, 248, 239, 0.50) !important;
-
-        display: block;
     }
 
 
-    /* -----------------------------------------------------
-       DARK MOBILE FOOTER
-       ----------------------------------------------------- */
-
-    body.dark-theme .footer {
-        background: #08070b;
-
-        color: #f5f1ea;
-
-        border-top:
-            1px solid
-            rgba(217, 184, 143, 0.15);
-    }
-
-    body.dark-theme .footer-brand .logo-main {
-        color: #f5f1ea !important;
-    }
-
-    body.dark-theme .footer-brand .logo-accent {
-        color: #d9b88f !important;
-    }
-
-    body.dark-theme .footer-brand p {
-        color:
-            rgba(245, 241, 234, 0.68) !important;
-    }
-
-    body.dark-theme .footer-links a {
-        color:
-            rgba(245, 241, 234, 0.72) !important;
-    }
-
-    body.dark-theme .footer-links a:hover {
-        color: #e8cca7 !important;
-    }
-
-    body.dark-theme .footer-credit {
-        color:
-            rgba(245, 241, 234, 0.62) !important;
-    }
-
-    body.dark-theme .copyright {
-        color:
-            rgba(245, 241, 234, 0.45) !important;
-    }
-
-
-    /* -----------------------------------------------------
-       MOBILE MODAL
-       ----------------------------------------------------- */
+    /* MODAL */
 
     .modal {
         padding: 0;
@@ -2689,7 +2545,6 @@ body.dark-theme .copyright {
 
     .modal-content {
         width: 100%;
-
         max-width: 100%;
 
         max-height: 100svh;
@@ -2728,7 +2583,7 @@ body.dark-theme .copyright {
 
 
 /* =========================================================
-   VERY SMALL PHONES
+   VERY SMALL PHONES — 380px
    ========================================================= */
 
 @media (max-width: 380px) {
@@ -2736,7 +2591,8 @@ body.dark-theme .copyright {
     .nav-container,
     .section-container,
     .hero-content {
-        width: calc(100% - 28px);
+        width:
+            calc(100% - 28px);
     }
 
     .genre-grid {
@@ -2751,16 +2607,16 @@ body.dark-theme .copyright {
         font-size: 90px;
     }
 
-    .footer {
-        padding:
-            40px 0
-            45px;
-    }
-
     .footer-container {
-        width: calc(100% - 28px);
+        width:
+            calc(100% - 28px);
 
         gap: 24px;
+    }
+
+    .footer {
+        padding:
+            42px 0 48px;
     }
 
     .footer-links {
@@ -2790,11 +2646,14 @@ body.dark-theme .copyright {
     *,
     *::before,
     *::after {
-        animation-duration: 0.01ms !important;
+        animation-duration:
+            0.01ms !important;
 
-        animation-iteration-count: 1 !important;
+        animation-iteration-count:
+            1 !important;
 
-        transition-duration: 0.01ms !important;
+        transition-duration:
+            0.01ms !important;
     }
 }
 
